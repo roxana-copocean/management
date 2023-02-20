@@ -22,3 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 documentation.txt
+storage.rules
+firebase.json
+firestore.indexes.json
+firestore.rules
+.firebaserc
+build
