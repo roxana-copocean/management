@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSignup } from '../../hooks/useSignup';
 import './Signup.css';
 
 export default function Signup() {
@@ -8,6 +9,15 @@ export default function Signup() {
 	const [ thumbnail, setThumbnail ] = useState(null);
 	const [ uploadFileError, setUploadFileError ] = useState(null);
 
+	const { error, isPending, signup } = useSignup();
+
+	// handle submit
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log(email, displayName, password, thumbnail);
+	};
+
+	// upload file(profile picture)
 	const handleFileChange = (e) => {
 		setThumbnail(null);
 		// e.target.files returns a array, so I select the first item of the array
@@ -28,8 +38,9 @@ export default function Signup() {
 		setThumbnail(selected);
 		console.log('Thumbnail updated');
 	};
+
 	return (
-		<form className="auth-form">
+		<form className="auth-form" onSubmit={handleSubmit}>
 			<h2>Sign up</h2>
 			<label>
 				<span>name</span>

@@ -28,3 +28,4 @@ firestore.indexes.json
 firestore.rules
 .firebaserc
 build
+config.js
