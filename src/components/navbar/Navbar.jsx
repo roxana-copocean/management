@@ -1,6 +1,6 @@
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-import logo from '../../assets/capybara-svgrepo-com.svg';
+import logo from '../../assets/capybara.svg';
 
 export default function Navbar() {
 	return (
