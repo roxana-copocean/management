@@ -11,10 +11,12 @@ import Create from './pages/create/Create';
 
 // Components
 import Navbar from './components/navbar/Navbar';
+import Sidebar from './components/sidebar/Sidebar';
 
 function App() {
 	return (
 		<div className="App">
+			<Sidebar />
 			<div className="container">
 				<React.Fragment>
 					<Navbar />
