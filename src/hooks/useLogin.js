@@ -1,7 +1,7 @@
 // Login Hook
 
 import { useState, useEffect } from 'react';
-import { projectAuth } from '../firebase/config';
+import { projectAuth, projectFirestore } from '../firebase/config';
 import { useAuthContext } from './useAuthContext';
 
 export const useLogin = () => {
@@ -16,6 +16,11 @@ export const useLogin = () => {
 		try {
 			//    login the user
 			const res = await projectAuth.signInWithEmailAndPassword(email, password);
+
+			// update the user online status
+
+			await projectFirestore.collection('users').doc(res.user.uid).update({ online: true });
+
 			// dispatch login function
 			dispatch({ type: 'LOGIN', payload: res.user });
 
@@ -24,10 +29,10 @@ export const useLogin = () => {
 				setIsPending(false);
 				setError(null);
 			}
-		} catch (error) {
+		} catch (err) {
 			if (!isCancelled) {
-				console.log(error.message);
-				setError(error.message);
+				console.log(err.message);
+				setError(err.message);
 				setIsPending(false);
 			}
 		}

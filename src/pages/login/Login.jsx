@@ -11,6 +11,8 @@ export default function Login() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		login(email, password);
+		setEmail('');
+		setPassword('');
 	};
 	return (
 		<form className="auth-form" onSubmit={handleSubmit}>
@@ -31,7 +33,6 @@ export default function Login() {
 					Login
 				</button>
 			)}
-
 			{error && <div className="error">{error}</div>}
 		</form>
 	);

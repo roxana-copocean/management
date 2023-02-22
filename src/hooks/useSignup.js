@@ -22,7 +22,7 @@ export const useSignup = () => {
 			}
 			//  upload the user profile image
 			// we create a folder in the firebase storage, we name it thumbnails, we go to the user/by usingh his id, and we use the name of the picture he uploaded to store it by its name
-			const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.displayName}`;
+			const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}`;
 			const img = await projectStorage.ref(uploadPath).put(thumbnail);
 			const imgUrl = await img.ref.getDownloadURL();
 

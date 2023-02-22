@@ -15,6 +15,10 @@ export default function Signup() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		signup(email, password, displayName, thumbnail);
+		setEmail('');
+		setPassword('');
+		setThumbnail(null);
+		setDisplayName('');
 	};
 
 	// upload file(profile picture)
