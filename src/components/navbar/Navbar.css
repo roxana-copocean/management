@@ -14,13 +14,19 @@
 .navbar .logo {
 	font-weight: bold;
 	color: var(--heading-color);
-	letter-spacing: 1px;
 	display: flex;
+	flex-direction: row;
 	align-items: center;
+	justify-content: center;
 	margin-right: auto;
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 }
 
+.logo_layout {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .navbar .logo img {
 	margin-right: .3em;
 	width: 2rem;
