@@ -8,9 +8,9 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 
 export default function Navbar() {
 	const { user } = useAuthContext();
-	const { logout, error, isPending } = useLogout();
+	const { logout, isPending } = useLogout();
 	return (
-		<div className="navbar">
+		<nav className="navbar">
 			<ul>
 				<li className="logo">
 					<Link to="/" className="logo_layout">
@@ -29,17 +29,20 @@ export default function Navbar() {
 					</React.Fragment>
 				)}
 				{user && (
-					<React.Fragment>
-						<li>
-							{!isPending && (
-								<button className="btn" onClick={logout}>
-									Logout
-								</button>
-							)}
-						</li>
-					</React.Fragment>
+					<li>
+						{!isPending && (
+							<button className="btn" onClick={logout}>
+								Logout
+							</button>
+						)}
+						{isPending && (
+							<button className="btn" disabled>
+								Loading
+							</button>
+						)}
+					</li>
 				)}
 			</ul>
-		</div>
+		</nav>
 	);
 }

@@ -27,7 +27,7 @@ export const useSignup = () => {
 			const imgUrl = await img.ref.getDownloadURL();
 
 			// add display name to user
-			await res.user.updateProfile({ displayName: displayName, photoURL: imgUrl });
+			await res.user.updateProfile({ displayName, photoURL: imgUrl });
 
 			// creating a user document
 			await projectFirestore.collection('users').doc(res.user.uid).set({
@@ -35,14 +35,14 @@ export const useSignup = () => {
 				displayName: displayName,
 				photoURL: imgUrl
 			});
-			console.log('hit');
+
 			// dispatch login action
 			dispatch({ type: 'LOGIN', payload: res.user });
 		} catch (error) {
 			if (!isCancelled) {
-				console.log(error.message);
 				setError(error.message);
 				setIsPending(false);
+				console.log(error.message);
 			}
 		}
 	};

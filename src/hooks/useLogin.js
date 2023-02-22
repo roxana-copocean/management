@@ -19,7 +19,8 @@ export const useLogin = () => {
 
 			// update the user online status
 
-			await projectFirestore.collection('users').doc(res.user.uid).update({ online: true });
+			const docRef = projectFirestore.collection('users').doc(res.user.uid);
+			await docRef.update({ online: true });
 
 			// dispatch login function
 			dispatch({ type: 'LOGIN', payload: res.user });

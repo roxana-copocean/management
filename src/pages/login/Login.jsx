@@ -11,8 +11,8 @@ export default function Login() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		login(email, password);
-		setEmail('');
-		setPassword('');
+		// setEmail('');
+		// setPassword('');
 	};
 	return (
 		<form className="auth-form" onSubmit={handleSubmit}>
@@ -27,10 +27,10 @@ export default function Login() {
 				<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
 			</label>
 
-			{!isPending && <button className="btn">Login</button>}
+			{!isPending && <button className="btn">Log in</button>}
 			{isPending && (
 				<button className="btn" disabled>
-					Login
+					loading
 				</button>
 			)}
 			{error && <div className="error">{error}</div>}

@@ -15,10 +15,10 @@ export default function Signup() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		signup(email, password, displayName, thumbnail);
-		setEmail('');
-		setPassword('');
-		setThumbnail(null);
-		setDisplayName('');
+		// setEmail('');
+		// setPassword('');
+		// setThumbnail(null);
+		// setDisplayName('');
 	};
 
 	// upload file(profile picture)
@@ -27,6 +27,8 @@ export default function Signup() {
 
 		// e.target.files returns a array, so I select the first item of the array
 		let selected = e.target.files[0];
+		console.log(selected);
+
 		if (!selected) {
 			setUploadFileError('Please select a file!');
 			return;
@@ -64,12 +66,7 @@ export default function Signup() {
 				<input type="file" required onChange={handleFileChange} />
 				{uploadFileError && <p className="error">{uploadFileError}</p>}
 			</label>
-			{!isPending && <button className="btn">Sign Up</button>}
-			{isPending && (
-				<button className="btn" disabled>
-					Sign Up
-				</button>
-			)}
+			<button className="btn">Sign Up</button>
 
 			{error && <div className="error">{error}</div>}
 		</form>
