@@ -1,6 +1,6 @@
 .sidebar {
-	width: 300px;
-	min-width: 300px;
+	width: 15em;
+	min-width: 15em;
 	background-color: var(--primary-color);
 	min-height: 100vh;
 	position: relative;
@@ -15,14 +15,13 @@
 .sidebar .user {
 	font-weight: bold;
 	text-align: center;
-	letter-spacing: 1px;
 	padding: 40px 30px;
-	border-bottom: 1px solid var(--white);
+	border-bottom: 1px solid var(--gray);
 }
 
 .sidebar .links {
-	margin-top: 80px;
-	margin-left: 20px;
+	margin-top: 3em;
+	margin-left: 1em;
 }
 
 .sidebar .links li {
@@ -31,24 +30,28 @@
 
 .sidebar .links a {
 	display: flex;
-	padding: 10px;
+	font-size: .9rem;
+	font-weight: 500;
 	text-decoration: none;
 	width: 100%;
-	color: var(--white);
+	padding: .3em;
+	color: var(--gray);
 }
 
 .sidebar .links img {
 	margin-right: 10px;
-	width: 1.5rem;
+	width: 1rem;
+	opacity: .8;
 	filter: invert(100%);
 }
 
 .sidebar .links a.active {
-	color: var(--highlight-color);
-	background-color: var(--bg-color);
-	border-radius: 20px 0 0 20px;
+	color: var(--accent-color);
+
+	background-color: var(--secondary-color);
+	border-radius: 4px 0 0 4px;
 }
 
 .sidebar .links .active img {
-	filter: invert(50%);
+	color: var(--accent-color);
 }

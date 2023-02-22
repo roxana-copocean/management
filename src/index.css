@@ -3,12 +3,14 @@
 /* custom properies */
 
 :root {
-	--heading-color: #184e77;
-	--primary-color: #1e6091;
+	--heading-color: #003760;
+	--primary-color: #2c384a;
+	--secondary-color: #314056;
 	--highlight-color: #1a759f;
-	--error: #ee9b00;
-	--text-color: #999;
-	--bg-color: #f4f4f4;
+	--error: #f57c00;
+	--accent-color: #039be5;
+	--gray: #eceff1;
+	--bg-color: #eceff1;
 	--white: #fff;
 	--input-color: #777;
 	--light-gray: #ddd;

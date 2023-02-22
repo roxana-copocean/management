@@ -1,7 +1,7 @@
 //  SIGNUP HOOK
 
 import { useState, useEffect } from 'react';
-import { projectAuth, projectStorage } from '../firebase/config';
+import { projectAuth, projectStorage, projectFirestore } from '../firebase/config';
 import { useAuthContext } from './useAuthContext';
 
 export const useSignup = () => {
@@ -10,7 +10,7 @@ export const useSignup = () => {
 	const [ isPending, setIsPending ] = useState(false);
 	const { dispatch } = useAuthContext();
 
-	const signup = async (name, email, password, thumbnail) => {
+	const signup = async (email, password, displayName, thumbnail) => {
 		setError(null);
 		setIsPending(true);
 
@@ -22,13 +22,20 @@ export const useSignup = () => {
 			}
 			//  upload the user profile image
 			// we create a folder in the firebase storage, we name it thumbnails, we go to the user/by usingh his id, and we use the name of the picture he uploaded to store it by its name
-			const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}`;
+			const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.displayName}`;
 			const img = await projectStorage.ref(uploadPath).put(thumbnail);
 			const imgUrl = await img.ref.getDownloadURL();
 
 			// add display name to user
-			await res.user.updateProfile({ displayName: name, photoURL: imgUrl });
+			await res.user.updateProfile({ displayName: displayName, photoURL: imgUrl });
 
+			// creating a user document
+			await projectFirestore.collection('users').doc(res.user.uid).set({
+				online: true,
+				displayName: displayName,
+				photoURL: imgUrl
+			});
+			console.log('hit');
 			// dispatch login action
 			dispatch({ type: 'LOGIN', payload: res.user });
 		} catch (error) {

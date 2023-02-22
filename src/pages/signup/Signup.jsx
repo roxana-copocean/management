@@ -14,12 +14,13 @@ export default function Signup() {
 	// handle submit
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(email, displayName, password, thumbnail);
+		signup(email, password, displayName, thumbnail);
 	};
 
 	// upload file(profile picture)
 	const handleFileChange = (e) => {
 		setThumbnail(null);
+
 		// e.target.files returns a array, so I select the first item of the array
 		let selected = e.target.files[0];
 		if (!selected) {
@@ -59,7 +60,14 @@ export default function Signup() {
 				<input type="file" required onChange={handleFileChange} />
 				{uploadFileError && <p className="error">{uploadFileError}</p>}
 			</label>
-			<button className="btn">Sign Up</button>
+			{!isPending && <button className="btn">Sign Up</button>}
+			{isPending && (
+				<button className="btn" disabled>
+					Sign Up
+				</button>
+			)}
+
+			{error && <div className="error">{error}</div>}
 		</form>
 	);
 }
